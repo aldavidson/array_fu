@@ -63,6 +63,14 @@ class Hash
 end
 
 
+# from http://redcorundum.blogspot.com/2007/02/have-you-seen-that-key.html
+module Enumerable
+  def uniq_by
+    seen = Hash.new { |h,k| h[k] = true; false }
+    reject { |v| seen[yield(v)] }
+  end
+end
+
 # add a count_by method onto active record model classes
 module ActiveRecord
   class Base
