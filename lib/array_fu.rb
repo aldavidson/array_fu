@@ -30,6 +30,20 @@ class Array
     }
     nil
   end
+  
+  def uniq_ignoring_case
+    # simple uniq first, to trim down the search space for case-insensitive uniq
+    result = self.uniq
+    de_duped = []
+    thrash = []
+    result.each do |element|
+      unless thrash.include?(element.downcase)
+        de_duped << element
+        thrash << element.downcase
+      end
+    end
+    de_duped
+  end
 end
 
 class Hash
