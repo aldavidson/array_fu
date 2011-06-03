@@ -74,6 +74,16 @@ class Hash
     } if total > limit
     self
   end
+  
+  # returns a new hash with just the key/value pairs from this hash given in keys
+  # e.g. 
+  #  { :simian=>'chimp', :fox=>'urban', :rodent=>'vole'}.intersection( [:rodent, :fox] ) 
+  #  => {:fox=>'urban', :rodent=>'vole'}
+  def intersection( keys )
+    h = {}
+    keys.each{ |k| h[k] = self[k] }
+    h
+  end
 end
 
 
