@@ -84,6 +84,11 @@ class Hash
     keys.each{ |k| h[k] = self[k] }
     h
   end
+  
+  def recursive_symbolize_keys!
+    symbolize_keys!
+    values.select { |v| v.is_a?(Hash) }.each { |h| h.recursive_symbolize_keys! }
+  end
 end
 
 
