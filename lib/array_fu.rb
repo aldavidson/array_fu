@@ -81,7 +81,7 @@ class Hash
   #  => {:fox=>'urban', :rodent=>'vole'}
   def intersection( keys )
     h = {}
-    keys.each{ |k| h[k] = self[k] }
+    keys.each{ |k| h[k] = self[k] if self[k] }
     h
   end
   
